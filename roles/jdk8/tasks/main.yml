@@ -1,5 +1,5 @@
 ---
-- include: webupd8.yml
+- include: repo.yml
 
 - name: Automatically select the Oracle License
   shell: echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
