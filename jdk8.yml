@@ -1,0 +1,5 @@
+- name: Jenkins
+  hosts: jenkins
+  roles:
+    - jdk8
+

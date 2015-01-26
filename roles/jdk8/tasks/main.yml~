@@ -1,0 +1,11 @@
+---
+- include: webupd8.yml
+
+- name: Automatically select the Oracle License
+  shell: echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
+  changed_when: false
+
+- name: Install Oracle Java
+  apt: pkg={{ jdk_version }} update-cache=yes state=latest
+  sudo: yes
+  when: item|search("^oracle")
