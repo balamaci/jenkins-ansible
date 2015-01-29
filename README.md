@@ -41,6 +41,7 @@ It will take some time first as Vagrant pulls the image from the repository. Oth
 To get into the instance you can run **vagrant ssh**
 
 ### Ansible
+This work was based upon [ansible-jenkins repo](https://github.com/ICTO/ansible-jenkins)
 Ansible is a great tool for provisioning - meaning the automation of installing/configuring stuff through scripts-. Some other provisioning tools you might have heard of: **Puppet**, **Chef**, **Salt**. 
 But I rather like Ansible because it can perform the installation without the need to have something particular(like a specific agent running) other than a working ssh connection to the target fleet of machines which we want to set up. 
 Also the syntax is quite simple with a low learning curve (which apparently puppet and chef do not have). 
@@ -210,8 +211,8 @@ If you've checked out my github [repo](https://github.com/balamaci/jenkins-ansib
 
 Running **vagrant up** will use the provided **Vagrant** file.
 
-After the machine is up, it's just a matter of invoking ansible playbook command to do the jenkins installation using the inventory file and providing as user the 'vagrant' user(which is automatically created and added to the list of SUDOERS by vagrant when it built the image) .
-
+After the machine is up, it's just a matter of invoking ansible playbook command to do the jenkins installation using the inventory file and providing as user the 'vagrant' user(which is automatically created and added to the list of SUDOERS by vagrant when it built the image).
+The playbook file jenkins.yml just combines the jdk + jenkins role
 
 ```bash
 ansible-playbook -i ansible.hosts --private-key=./.vagrant/machines/default/virtualbox/private_key -u vagrant jenkins.yml
